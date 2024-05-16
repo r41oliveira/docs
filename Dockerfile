@@ -5,7 +5,7 @@
 # --------------------------------------------------------------------------------
 # To update the sha, run `docker pull node:$VERSION-alpine`
 # look for something like: `Digest: sha256:0123456789abcdef`
-FROM node:20-alpine@sha256:7e227295e96f5b00aa79555ae166f50610940d888fc2e321cf36304cbd17d7d6 as base
+FROM node:20-alpine@sha256:291e84d956f1aff38454bbd3da38941461ad569a185c20aa289f71f37ea08e23 as base
 
 # This directory is owned by the node user
 ARG APP_HOME=/home/node/app
@@ -93,6 +93,7 @@ COPY --chown=node:node .remotejson-cache* ./.remotejson-cache
 COPY --chown=node:node .pageinfo-cache.json.br* ./.pageinfo-cache.json.br
 COPY --chown=node:node data ./data
 COPY --chown=node:node next.config.js ./
+COPY --chown=node:node tsconfig.json ./
 
 EXPOSE $PORT
 
